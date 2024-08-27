@@ -1,4 +1,4 @@
-5700f3bfcacee3fbd8fa573e048d92bb *DESCRIPTION
+6fdadb3014f3e31538c36523d975eec6 *DESCRIPTION
 434ac298fe2d7c4863b09eea406888d6 *NAMESPACE
 b817ba287822b9b2e0dd1f059ef85e79 *R/functions_fillin_20240805.R
 d977e35d677774d90be929b50a241e56 *R/functions_mar_fill_20240805.R
@@ -11,7 +11,7 @@ d423b7031baa2cb8d15ce7a456db20d2 *data/simdata15.rda
 ef5b2d2346b00890e1a235274fa0db36 *data/simdata58.rda
 0bae6c910658db15d72ed708e32c4834 *inst/doc/marlod.R
 8f9d559924e9064987ad29d6a0c82552 *inst/doc/marlod.Rmd
-358b9843139d3f9cba1bf4c660b4e4c9 *inst/doc/marlod.html
+8c3c6e5c70278e3e66962cf8d7c1ff3c *inst/doc/marlod.html
 61afbd8f699ddd5bb2354857d2994b16 *man/Fillin.Rd
 7ba9749bfefab8b98266c9222a415806 *man/MGEE.Rd
 89d1fbdde90c120d3c8c8fcfe3322958 *man/MQIF.Rd
