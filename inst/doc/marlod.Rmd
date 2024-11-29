@@ -49,7 +49,7 @@ Fillin(y, lod, "BetaGM")
 Conventional statistical analyses often assume that responses or outcome data follow a normal distribution. If the underlying distribution is log-normal, data transformation using the natural logarithm required. To analyze such data, marginal models utilizing estimation methods such as generalized estimating equations (GEE), quadratic inference functions (QIF), and generalized method of moments (GMM) are employed. These methods incorporate the imputation of measurements below the LOD using single and multiple value imputation techniques (Chen _et al_., 2024).
 
 ### 3-1. Simulated Dataset 15
-The 15th dataset from a simulation study includes 100 subjects (sample size is 100), each with three repeated measurements. The independent variables or covariates (x1 and x2) are simulated from a binomial distribution with a parameter value of $p = 0.5$ and a uniform distribution $U(0, 1)$, respectively. Correlated errors for repeated measures models are accounted for and assumed to follow a multivariate normal distribution, $MVN(0, R(\alpha))$. A first-order autoregressive (AR-1) correlation structure with a correlation parameter of $\alpha = 0.7$ is incorporated. The true values of 1, 1, and 1 correspond to the marginal intercept and two slopes.
+The 15th dataset from a simulation study includes 100 subjects (sample size is 100), each with three repeated measurements. The independent variables or covariates (x1 and x2) are simulated from a Bernoulli distribution with a parameter value of $p = 0.5$ and a uniform distribution $U(0, 1)$, respectively. Correlated errors for repeated measures models are accounted for and assumed to follow a multivariate normal distribution, $MVN(0, R(\alpha))$. A first-order autoregressive (AR-1) correlation structure with a correlation parameter of $\alpha = 0.7$ is incorporated. The true values of 1, 1, and 1 correspond to the marginal intercept and two slopes.
 
 ```{r}
 data(simdata15)
@@ -182,15 +182,15 @@ x=cbind(matrix(1,length(x1),1),x1)
 ## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).
 lod=0.05
 
-## Median or 50th quantile is given.
-tau=0.5
+## 95th quantile is given.
+tau=0.95
 
 ## Intercept is included in the "x".
 ## Quantile.select.FWZ(y, x, lod, substitue, tau, data)
 Quantile.select.FWZ(y, x, lod, "LOD2", tau, simdata58)
 ```
 
-The selection criterion identifies **type 1** as the appropriate covariate type. The quantile regression result with the updated covariate type of time-dependency is displayed. Additionally, this selected type of time-dependent covariate (in this case, **type 1**) can also be updated in the "typed" parameter of the function `Quantile.FWZ()`, enabling analysts to conduct multivariable analysis.
+The selection criterion identifies **type 2** as the appropriate covariate type. The quantile regression result with the updated covariate type of time-dependency is displayed. Additionally, this selected type of time-dependent covariate (in this case, **type 2**) can also be updated in the "typed" parameter of the function `Quantile.FWZ()`, enabling analysts to conduct multivariable analysis.
 
 ```{r}
 y=as.matrix(as.vector(t(simdata58$y)))
@@ -200,12 +200,12 @@ x=cbind(matrix(1,length(x1),1),x1)
 ## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).
 lod=0.05
 
-## Median or 50th quantile is given.
-tau=0.5
+## 95th quantile is given.
+tau=0.95
 
 ## Intercept is included in the "x" but not in the "typed".
 ## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)
-Quantile.FWZ(y, x, lod, "LOD2", tau, "AR-1", c(1), simdata58)
+Quantile.FWZ(y, x, lod, "LOD2", tau, "AR-1", c(2), simdata58)
 ```
 
 ## 5. References

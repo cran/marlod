@@ -1,4 +1,4 @@
-6fdadb3014f3e31538c36523d975eec6 *DESCRIPTION
+4c07d2f49e86462160e2064ee4c55fb9 *DESCRIPTION
 434ac298fe2d7c4863b09eea406888d6 *NAMESPACE
 b817ba287822b9b2e0dd1f059ef85e79 *R/functions_fillin_20240805.R
 d977e35d677774d90be929b50a241e56 *R/functions_mar_fill_20240805.R
@@ -9,9 +9,9 @@ a1228c672c515172a6701175a6caca38 *R/functions_quant_FWZ_fill_20240805.R
 8ed0b91f8267b9d4de67da257c3d92cc *build/vignette.rds
 d423b7031baa2cb8d15ce7a456db20d2 *data/simdata15.rda
 ef5b2d2346b00890e1a235274fa0db36 *data/simdata58.rda
-0bae6c910658db15d72ed708e32c4834 *inst/doc/marlod.R
-8f9d559924e9064987ad29d6a0c82552 *inst/doc/marlod.Rmd
-8c3c6e5c70278e3e66962cf8d7c1ff3c *inst/doc/marlod.html
+7b20f7f9bfc07d8fe89fdf187581cc8d *inst/doc/marlod.R
+050b82c8e5358dfda4bf315f441b1976 *inst/doc/marlod.Rmd
+85e9c91aae8ded5d4a0f013bf6f66451 *inst/doc/marlod.html
 61afbd8f699ddd5bb2354857d2994b16 *man/Fillin.Rd
 7ba9749bfefab8b98266c9222a415806 *man/MGEE.Rd
 89d1fbdde90c120d3c8c8fcfe3322958 *man/MQIF.Rd
@@ -22,6 +22,6 @@ d9ba89ea542e8569f6d7b3b5ce7d0473 *man/Modified.QIF.Rd
 c5370ba3ad51d160d5312936fc5f6a71 *man/Quantile.select.FWZ.Rd
 909c47df56dbbe24c1a4c1c09629f9cd *man/Selected.GEE.Rd
 872d362d1ecabf70edecf3ec16af663b *man/Selected.QIF.Rd
-a7d9086b077051155b538dc7a7738ba6 *man/Simdata15.Rd
-fbd4a08de378c4e0ac1572f2d4acc86d *man/Simdata58.Rd
-8f9d559924e9064987ad29d6a0c82552 *vignettes/marlod.Rmd
+6b188ba6b005f2e720a1344b73bd4c77 *man/Simdata15.Rd
+d3dc73c2a82e1527f6d14cffece54b9d *man/Simdata58.Rd
+050b82c8e5358dfda4bf315f441b1976 *vignettes/marlod.Rmd

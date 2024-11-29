@@ -10,7 +10,7 @@
   \describe{
     \item{\code{y}}{A column matrix of the continuous outcome values.}
     \item{\code{int}}{A column matrix of the intercept values of one.}
-    \item{\code{x1}}{A column matrix of the binary covariate values that follow a binomial distribution.}
+    \item{\code{x1}}{A column matrix of the continuous covariate values.}
     \item{\code{id}}{A column matrix of the numbers of identification.}
     \item{\code{visit}}{A column matrix of the order of cluster size or time points.}
   }

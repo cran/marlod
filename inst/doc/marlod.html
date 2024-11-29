@@ -392,7 +392,7 @@ techniques (Chen <em>et al</em>., 2024).</p>
 <p>The 15th dataset from a simulation study includes 100 subjects
 (sample size is 100), each with three repeated measurements. The
 independent variables or covariates (x1 and x2) are simulated from a
-binomial distribution with a parameter value of <span class="math inline">\(p = 0.5\)</span> and a uniform distribution <span class="math inline">\(U(0, 1)\)</span>, respectively. Correlated errors
+Bernoulli distribution with a parameter value of <span class="math inline">\(p = 0.5\)</span> and a uniform distribution <span class="math inline">\(U(0, 1)\)</span>, respectively. Correlated errors
 for repeated measures models are accounted for and assumed to follow a
 multivariate normal distribution, <span class="math inline">\(MVN(0,
 R(\alpha))\)</span>. A first-order autoregressive (AR-1) correlation
@@ -1070,15 +1070,15 @@ and Westgate, 2017, 2019). Given the longitudinal nature of the dataset,
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0015313</td>
+<td align="right">0.0015379</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0014112</td>
+<td align="right">0.0014166</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0011461</td>
+<td align="right">0.0011401</td>
 </tr>
 </tbody>
 </table>
@@ -1126,19 +1126,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.451278107461759</td>
-<td align="left">0.0373792382323482</td>
-<td align="left">12.0729615905126</td>
+<td align="left">0.450925205700861</td>
+<td align="left">0.0374051461447614</td>
+<td align="left">12.0551649218463</td>
 <td align="left">0</td>
-<td align="left">0.0025035835537326</td>
-<td align="left">2.18444044418726</td>
+<td align="left">0.00250336834913737</td>
+<td align="left">2.1830949277774</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.251316707406584</td>
-<td align="left">0.0332622323800127</td>
-<td align="left">7.55561757056332</td>
-<td align="left">2.22282192652301e-11</td>
+<td align="left">0.251550493759235</td>
+<td align="left">0.0332298569215458</td>
+<td align="left">7.57001435044196</td>
+<td align="left">2.07276418251467e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1153,19 +1153,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.451278107461759</td>
-<td align="left">0.0378932991767471</td>
-<td align="left">11.9091796509152</td>
+<td align="left">0.450925205700861</td>
+<td align="left">0.0379198992224082</td>
+<td align="left">11.8915190954514</td>
 <td align="left">0</td>
-<td align="left">0.00259157535954833</td>
-<td align="left">2.26252251135626</td>
+<td align="left">0.00259135719310305</td>
+<td align="left">2.26112945039475</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.251316707406584</td>
-<td align="left">0.0339951943228726</td>
-<td align="left">7.39271277639068</td>
-<td align="left">4.89126517067007e-11</td>
+<td align="left">0.251550493759235</td>
+<td align="left">0.0339623090508501</td>
+<td align="left">7.40675474634546</td>
+<td align="left">4.57056614777684e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1180,19 +1180,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.451278107461759</td>
-<td align="left">0.0376350781892202</td>
-<td align="left">11.990890657722</td>
+<td align="left">0.450925205700861</td>
+<td align="left">0.0376613295000215</td>
+<td align="left">11.9731621715745</td>
 <td align="left">0</td>
-<td align="left">0.00254700065700194</td>
-<td align="left">2.22296107438918</td>
+<td align="left">0.00254678381890442</td>
+<td align="left">2.22159195391249</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.251316707406584</td>
-<td align="left">0.0336244189049152</td>
-<td align="left">7.47423198947376</td>
-<td align="left">3.29798410803051e-11</td>
+<td align="left">0.251550493759235</td>
+<td align="left">0.0335917858887442</td>
+<td align="left">7.48845252206504</td>
+<td align="left">3.0785152205226e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1207,25 +1207,25 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.451278107461759</td>
-<td align="left">0.0377644093877237</td>
-<td align="left">11.9498256368458</td>
+<td align="left">0.450925205700861</td>
+<td align="left">0.0377908355077444</td>
+<td align="left">11.9321311540851</td>
 <td align="left">0</td>
-<td align="left">0.00254700065700194</td>
-<td align="left">2.24274179287272</td>
+<td align="left">0.00254678381890442</td>
+<td align="left">2.24136070215362</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.251316707406584</td>
-<td align="left">0.0338103148738894</td>
-<td align="left">7.43313714598582</td>
-<td align="left">4.02342603678107e-11</td>
+<td align="left">0.251550493759235</td>
+<td align="left">0.0337775555307121</td>
+<td align="left">7.4472675658993</td>
+<td align="left">3.75767195137655e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
 <td align="left">Estimated correlation</td>
-<td align="left">0.140978345887248</td>
+<td align="left">0.141648362085331</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1234,7 +1234,7 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">Estimated dispersion</td>
-<td align="left">0.366193917142601</td>
+<td align="left">0.36639482931441</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1266,15 +1266,15 @@ in the “typed” vector of the function <code>Modified.QIF()</code>.</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0027908</td>
+<td align="right">0.0027840</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0024407</td>
+<td align="right">0.0024454</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0010935</td>
+<td align="right">0.0010948</td>
 </tr>
 </tbody>
 </table>
@@ -1340,25 +1340,25 @@ Chen <em>et al</em>. (2024).</p>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
 <span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">## Median or 50th quantile is given.</span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.5</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">## 95th quantile is given.</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.95</span></span>
 <span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
 <span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot;.</span></span>
 <span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## Quantile.select.FWZ(y, x, lod, substitue, tau, data)</span></span>
 <span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="fu">Quantile.select.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, simdata58)</span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt;                                beta.0         beta.1</span></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; Quantile Level           0.000000e+00   5.000000e-01</span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; Type of Time-Dependency  0.000000e+00   1.000000e+00</span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; Estimate                1.339392e+119 -9.268068e+118</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; Standard Error          1.426159e+118  9.868470e+117</span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower            1.056411e+119 -1.122619e+119</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper            1.622373e+119 -7.309950e+118</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; P-value                  1.000000e+00   1.000000e+00</span></span></code></pre></div>
-<p>The selection criterion identifies <strong>type 1</strong> as the
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt;                         beta.0 beta.1</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; Quantile Level          0.0000 0.9500</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; Type of Time-Dependency 0.0000 2.0000</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; Estimate                1.5715 0.5074</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; Standard Error          0.0932 0.0365</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower            1.3866 0.4350</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper            1.7564 0.5798</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; P-value                 0.0000 0.0000</span></span></code></pre></div>
+<p>The selection criterion identifies <strong>type 2</strong> as the
 appropriate covariate type. The quantile regression result with the
 updated covariate type of time-dependency is displayed. Additionally,
 this selected type of time-dependent covariate (in this case,
-<strong>type 1</strong>) can also be updated in the “typed” parameter of
+<strong>type 2</strong>) can also be updated in the “typed” parameter of
 the function <code>Quantile.FWZ()</code>, enabling analysts to conduct
 multivariable analysis.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
@@ -1368,21 +1368,21 @@ multivariable analysis.</p>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
 <span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
 <span id="cb14-7"><a href="#cb14-7" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="do">## Median or 50th quantile is given.</span></span>
-<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.5</span></span>
+<span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="do">## 95th quantile is given.</span></span>
+<span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.95</span></span>
 <span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a></span>
 <span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot; but not in the &quot;typed&quot;.</span></span>
 <span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="do">## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">1</span>), simdata58)</span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">2</span>), simdata58)</span>
 <span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; Quantile level and correlation structure are provided in the column of Intercept.</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt;                            Intercept                     X2</span></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; Quantile Level                   0.5                      0</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; Structure                       AR-1                      0</span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; Estimate       1.33939165706094e+119 -9.26806818088443e+118</span></span>
-<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; Standard Error 1.42615945424739e+118  9.86847009314116e+117</span></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower   1.05641068058265e+119 -1.12261867453879e+119</span></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper   1.62237263353923e+119   -7.309949616381e+118</span></span>
-<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#&gt; P-value                            1                      1</span></span></code></pre></div>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt;                Intercept     X2</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; Quantile Level      0.95      0</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; Structure           AR-1      0</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; Estimate          1.5685  0.507</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; Standard Error    0.0907 0.0363</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower      1.3885  0.435</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper      1.7485  0.579</span></span>
+<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#&gt; P-value                0      0</span></span></code></pre></div>
 </div>
 </div>
 <div id="references" class="section level2">

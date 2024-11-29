@@ -108,8 +108,8 @@ x=cbind(matrix(1,length(x1),1),x1)
 ## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).
 lod=0.05
 
-## Median or 50th quantile is given.
-tau=0.5
+## 95th quantile is given.
+tau=0.95
 
 ## Intercept is included in the "x".
 ## Quantile.select.FWZ(y, x, lod, substitue, tau, data)
@@ -123,10 +123,10 @@ x=cbind(matrix(1,length(x1),1),x1)
 ## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).
 lod=0.05
 
-## Median or 50th quantile is given.
-tau=0.5
+## 95th quantile is given.
+tau=0.95
 
 ## Intercept is included in the "x" but not in the "typed".
 ## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)
-Quantile.FWZ(y, x, lod, "LOD2", tau, "AR-1", c(1), simdata58)
+Quantile.FWZ(y, x, lod, "LOD2", tau, "AR-1", c(2), simdata58)
 
