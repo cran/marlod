@@ -15,7 +15,7 @@
 
 \details{The modified GMM approach was originally proposed by Chen and Westgate (2017), in whcih a linear shrinkage method of Han and Song (2011) was incorporated to resolve potential singularity problems. The method should be utilized when the Moore–Penrose generalized inverse fails to solve the weighting matrix. Small-sample standard error corrections were also applied to the modified GMM (Mancl and DeRouen, 2001; Westgate, 2012). With the marginal modeling, Chen \emph{et al.} (2024) incorporate the fill-in methods, including single and multiple value imputation techniques, such that any measurements less than the limit of detection (LOD) are assigned values. This function also presents the results of the "trace of the empirical covariance matrix" (TECM) (Westgate, 2014a) and the "correlation information criterion" (CIC) (Hin and Wang, 2009). Both criteria have been shown to be preferable to other criteria in choosing an analysis method and corresponding structure (Westgate, 2014b).
 
-See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15".}
+See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15". Note that the function "impute.boot" and its corresponding functions used to apply the multiple random value imputation are from the package "miWQS" (version 0.4.4). Please cite "miWQS" when publishing results using "MIWithID" or "MIWithIDRM".}
 \value{An object of class "Modified.GMM" representing the fit.}
 
 \references{Chen, I-C., Bertke, S. J., Estill, C. F. (2024). Compare the Marginal Effects for Environmental Exposure and Biomonitoring Data with Repeated Measurements and Values Below the Limit of Detection. \emph{Journal of Exposure Science and Environmental Epidemiology}. \doi{10.1038/s41370-024-00640-7}
@@ -40,7 +40,6 @@ Westgate, P. M. (2014b). Criterion for the simultaneous selection of a working c
 ## Uses the simdata15 to run the marginal models.
 library(marlod)
 library(MASS)
-library(miWQS)
 
 data(simdata15)
 

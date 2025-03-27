@@ -9,8 +9,10 @@ export(Quantile.select.FWZ)
 export(Selected.GEE)
 export(Selected.QIF)
 importFrom("MASS", "ginv")
-importFrom("miWQS", "impute.Lubin")
+importFrom("survival", "Surv", "survreg")
 importFrom("quantreg", "rq")
 importFrom("stats", "dnorm", "gaussian", "glm", "optimize", "pf",
-               "pnorm", "qnorm", "qt")
+               "pnorm", "qnorm", "qt", "complete.cases", "model.frame",
+               "model.matrix", "na.omit", "plnorm", "qlnorm", "runif")
 importFrom("knitr", "kable")
+importFrom("utils", "head")

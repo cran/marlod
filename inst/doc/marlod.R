@@ -13,8 +13,20 @@ y <- c(0,0,0,3.06,4.41,7.23,8.29,9.52,19.94,20.25)
 ## Limit of detection (LOD) = 3
 lod <- 3
 
-Fillin(y, lod, "BetaMean")
-Fillin(y, lod, "BetaGM")
+Fillin(y, lod, n, tp, "BetaMean")
+Fillin(y, lod, n, tp, "BetaGM")
+
+## -----------------------------------------------------------------------------
+y <- c(0,0,0,3.06,4.41,7.23,8.29,9.52,19.94,20.25) 
+lod <- 3
+n <- 5
+tp <- 2
+
+#Multiple imputation method with one covariate using id (order of subjects)
+Fillin(y, lod, n, tp, "MIWithID")
+
+#Multiple imputation method with two covariates using id and visit (order of time points)
+#Fillin(y, lod, n, tp, "MIWithIDRM")
 
 ## -----------------------------------------------------------------------------
 data(simdata15)

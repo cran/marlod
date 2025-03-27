@@ -16,7 +16,7 @@
 
 \details{The function modifies the supplementary R function for GEE in Westgate (2014a), in whcih small-sample standard error corrections are applied (Kauermann and Carroll, 2001; Mancl and DeRouen, 2001; Westgate, 2013). More discussions about the use of covariance corrections can be found in Westgate (2016), and Ford and Westgate (2017, 2018). With the marginal modeling, Chen \emph{et al.} (2024) incorporate the fill-in methods, including single and multiple value imputation techniques, such that any measurements less than the limit of detection (LOD) are assigned values. This function also presents the results of the "trace of the empirical covariance matrix" (TECM) (Westgate, 2014b) and the "correlation information criterion" (CIC) (Hin and Wang, 2009). Both criteria have been shown to be preferable to other criteria in choosing an analysis method and corresponding structure (Westgate, 2014a).
 
-See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15".}
+See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15". Note that the function "impute.boot" and its corresponding functions used to apply the multiple random value imputation are from the package "miWQS" (version 0.4.4). Please cite "miWQS" when publishing results using "MIWithID" or "MIWithIDRM".}
 \value{An object of class "Modified.GEE" representing the fit.}
 
 \references{Chen, I-C., Bertke, S. J., Estill, C. F. (2024). Compare the Marginal Effects for Environmental Exposure and Biomonitoring Data with Repeated Measurements and Values Below the Limit of Detection. \emph{Journal of Exposure Science and Environmental Epidemiology}. \doi{10.1038/s41370-024-00640-7}
@@ -51,7 +51,6 @@ Westgate, P. M. (2016). A covariance correction that accounts for correlation es
 ## Uses the simdata15 to run the marginal models.
 library(marlod)
 library(MASS)
-library(miWQS)
 
 data(simdata15)
 

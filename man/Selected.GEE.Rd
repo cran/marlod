@@ -15,7 +15,7 @@
 
 \details{The function modifies the supplementary R function for GEE in Westgate (2014). With the marginal modeling, Chen \emph{et al.} (2024) incorporate the fill-in methods, including single and multiple value imputation techniques, such that any measurements less than the limit of detection (LOD) are assigned values. Based on the manuscripts of Chen and Westgate (2017, 2019), this function also enable to use a empirical MSE minimization criterion (EMMC) to select a working type of time-dependent covaraite.
 
-See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata58", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata58".}
+See the Details of the "Fillin" function for introduction of the available fill-in or substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata58", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata58". Note that the function "impute.boot" and its corresponding functions used to apply the multiple random value imputation are from the package "miWQS" (version 0.4.4). Please cite "miWQS" when publishing results using "MIWithID" or "MIWithIDRM".}
 \value{An object of class "Selected.GEE" representing the fit.}
 
 \references{Chen, I-C., Bertke, S. J., Estill, C. F. (2024). Compare the Marginal Effects for Environmental Exposure and Biomonitoring Data with Repeated Measurements and Values Below the Limit of Detection. \emph{Journal of Exposure Science and Environmental Epidemiology}. \doi{10.1038/s41370-024-00640-7}
@@ -38,7 +38,6 @@ Westgate, P. M. (2014). Criterion for the simultaneous selection of a working co
 ## Uses the simdata58 to run the marginal models.
 library(marlod)
 library(MASS)
-library(miWQS)
 
 data(simdata58)
 

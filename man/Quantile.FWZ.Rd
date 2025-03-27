@@ -16,7 +16,7 @@
 
 \details{This function modifies the R functions provided by Dr. Liya Fu and based on the manuscript of Fu \emph{et al.} (2015). Chen \emph{et al.} (2021) further applied the Gaussian pseudolikelihood approach for quantile regression to environmental exposure and biomonitoring repeated measures data with values less than the limit of detection (LOD). Fill-in or substitution methods, including single and multiple value imputation techniques, were used to assign values for non-detects.
 
-See the Details of the "Fillin" function for introduction of the available substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15".}
+See the Details of the "Fillin" function for introduction of the available substitution methods. For a multiple random value imputation technique, it provides an alternative for environmental exposure and biomonitoring data with non-detects, in which the imputed values can be generated using a regression of an exposure measurement on covariate(s) ("MIWithID" and "MIWithIDRM") (Lubin \emph{et al.}, 2004). Information of identification (ID) would be included in "MIWithID" as the covariate, e.g., "id in "simdata15", while ID and order of cluster size or time points would be treated as the covariates in "MIWithIDRM", e.g. "id" and "visit" in "simdata15". Note that the function "impute.boot" and its corresponding functions used to apply the multiple random value imputation are from the package "miWQS" (version 0.4.4). Please cite "miWQS" when publishing results using "MIWithID" or "MIWithIDRM".}
 \value{An object of class "Quantile.FWZ" representing the fit.}
 
 \references{Chen, I-C., Bertke, S. J., Curwin, B. D. (2021). Quantile regression for exposure data with repeated measures in the presence of non-detects. \emph{Journal of Exposure Science and Environmental Epidemiology}, 31, 1057--1066.
@@ -32,7 +32,6 @@ Lubin, J. H., Colt, J. S., Camann, D., \emph{et al.} (2004). Epidemiologic evalu
 ## Uses the simdata15 to run the marginal models.
 library(marlod)
 library(MASS)
-library(miWQS)
 library(quantreg)
 
 data(simdata15)

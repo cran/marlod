@@ -40,8 +40,23 @@ y <- c(0,0,0,3.06,4.41,7.23,8.29,9.52,19.94,20.25)
 ## Limit of detection (LOD) = 3
 lod <- 3
 
-Fillin(y, lod, "BetaMean")
-Fillin(y, lod, "BetaGM")
+Fillin(y, lod, n, tp, "BetaMean")
+Fillin(y, lod, n, tp, "BetaGM")
+```
+
+Consider the same example of a longitudinal dataset comprising five subjects, each measured at two time points. The analysis requires the number of subjects (n) and the number of time points (tp). The available substitution methods include "MIWithID" and "MIWithIDRM".
+
+```{r}
+y <- c(0,0,0,3.06,4.41,7.23,8.29,9.52,19.94,20.25) 
+lod <- 3
+n <- 5
+tp <- 2
+
+#Multiple imputation method with one covariate using id (order of subjects)
+Fillin(y, lod, n, tp, "MIWithID")
+
+#Multiple imputation method with two covariates using id and visit (order of time points)
+#Fillin(y, lod, n, tp, "MIWithIDRM")
 ```
 
 ## 3. Outcome Data: Normal or Log-Normal Distribution
@@ -212,9 +227,9 @@ Quantile.FWZ(y, x, lod, "LOD2", tau, "AR-1", c(2), simdata58)
 
 - Chen IC, Bertke SJ, Curwin BD. Quantile regression for exposure data with repeated measures in the presence of non-detects. _J Expo Sci Environ Epidemiol._ 2021; 31(6): 1057–1066.
 
-- Chen IC, Bertke SJ, Estill CF. Compare the marginal effects for environmental exposure and biomonitoring data with repeated measurements and values below the limit of detection. _J Expo Sci Environ Epidemiol._ 2024. https://doi.org/10.1038/s41370-024-00640-7
+- Chen IC, Bertke SJ, Estill CF. Compare the marginal effects for environmental exposure and biomonitoring data with repeated measurements and values below the limit of detection. _J Expo Sci Environ Epidemiol._ 2024; 34: 1018–1027.
 
-- Chen IC, Bertke SJ, Dahm MM. Quantile regression for longitudinal data with values below the limit of detection and time-dependent covariates – application to modeling carbon nanotube and nanofiber exposures. _Ann Work Expo Health._ 2024. https://doi.org/10.1093/annweh/wxae068
+- Chen IC, Bertke SJ, Dahm MM. Quantile regression for longitudinal data with values below the limit of detection and time-dependent covariates – application to modeling carbon nanotube and nanofiber exposures. _Ann Work Expo Health._ 2024; 68(8): 846–858.
 
 - Chen IC, Westgate PM. Improved methods for the marginal analysis of longitudinal data in the presence of time-dependent covariates. _Statistics in Medicine._ 2017; 36(16): 2533–2546.
 

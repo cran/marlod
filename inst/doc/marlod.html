@@ -351,7 +351,13 @@ left-censored. Left censoring occurs when laboratory instruments have a
 limit of detection (LOD) below which measurements are not provided.</p>
 <p>To conduct regression models for repeated measures data with
 non-detects, it is necessary to install the R package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(marlod)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">library</span>(marlod)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="co">#&gt; Thank you for using marlod.</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt;   Please cite:</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt;   Chen, IC. marlod: an R package to model environmental exposure and biomonitoring</span></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;   data with repeated measurements and values below the limit of detection.</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt;   J Expo Sci Environ Epidemiol 2025.</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt;   when publishing results obtained from the package.</span></span></code></pre></div>
 <p>After building and installing the package, you can view the vignette
 by using the command:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="at">package =</span> <span class="st">&#39;marlod&#39;</span>)</span></code></pre></div>
@@ -369,12 +375,32 @@ method can be found in the Reference Manual of the Documentation.</p>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="do">## Limit of detection (LOD) = 3</span></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>lod <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">Fillin</span>(y, lod, <span class="st">&quot;BetaMean&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="fu">Fillin</span>(y, lod, n, tp, <span class="st">&quot;BetaMean&quot;</span>)</span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">#&gt;  [1]  1.762431  1.762431  1.762431  3.060000  4.410000  7.230000  8.290000</span></span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="co">#&gt;  [8]  9.520000 19.940000 20.250000</span></span>
-<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="fu">Fillin</span>(y, lod, <span class="st">&quot;BetaGM&quot;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="fu">Fillin</span>(y, lod, n, tp, <span class="st">&quot;BetaGM&quot;</span>)</span>
 <span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="co">#&gt;  [1]  1.482424  1.482424  1.482424  3.060000  4.410000  7.230000  8.290000</span></span>
 <span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="co">#&gt;  [8]  9.520000 19.940000 20.250000</span></span></code></pre></div>
+<p>Consider the same example of a longitudinal dataset comprising five
+subjects, each measured at two time points. The analysis requires the
+number of subjects (n) and the number of time points (tp). The available
+substitution methods include “MIWithID” and “MIWithIDRM”.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="fl">3.06</span>,<span class="fl">4.41</span>,<span class="fl">7.23</span>,<span class="fl">8.29</span>,<span class="fl">9.52</span>,<span class="fl">19.94</span>,<span class="fl">20.25</span>) </span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>lod <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a>tp <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#Multiple imputation method with one covariate using id (order of subjects)</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="fu">Fillin</span>(y, lod, n, tp, <span class="st">&quot;MIWithID&quot;</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; K = 5</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;  [1]  1.786605  2.166190  2.845250  3.060000  4.410000  7.230000  8.290000</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;  [8]  9.520000 19.940000 20.250000</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#Multiple imputation method with two covariates using id and visit (order of time points)</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#Fillin(y, lod, n, tp, &quot;MIWithIDRM&quot;)</span></span></code></pre></div>
 </div>
 <div id="outcome-data-normal-or-log-normal-distribution" class="section level2">
 <h2>3. Outcome Data: Normal or Log-Normal Distribution</h2>
@@ -399,15 +425,15 @@ R(\alpha))\)</span>. A first-order autoregressive (AR-1) correlation
 structure with a correlation parameter of <span class="math inline">\(\alpha = 0.7\)</span> is incorporated. The true
 values of 1, 1, and 1 correspond to the marginal intercept and two
 slopes.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">data</span>(simdata15)</span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">head</span>(simdata15)</span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt;           y int x1        x2 id visit</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; 1  3.879122   1  1 0.7528836  1     1</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt; 2  4.008937   1  1 0.7528836  1     2</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; 3  4.380099   1  1 0.7528836  1     3</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; 4  1.847881   1  0 0.8511011  2     1</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 5  1.806600   1  0 0.8511011  2     2</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 6 -0.146508   1  0 0.8511011  2     3</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">data</span>(simdata15)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">head</span>(simdata15)</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt;           y int x1        x2 id visit</span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt; 1  3.879122   1  1 0.7528836  1     1</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt; 2  4.008937   1  1 0.7528836  1     2</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt; 3  4.380099   1  1 0.7528836  1     3</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; 4  1.847881   1  0 0.8511011  2     1</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; 5  1.806600   1  0 0.8511011  2     2</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; 6 -0.146508   1  0 0.8511011  2     3</span></span></code></pre></div>
 </div>
 <div id="marginal-modeling-mean-regression-model" class="section level3">
 <h3>3-2. Marginal Modeling (Mean Regression Model)</h3>
@@ -423,21 +449,21 @@ length of the vector equal to the number of regression parameters,
 excluding the intercept. For time-independent covariates or those in a
 cluster study, “1” is assigned, thus “c(1,1)” is used for “typed”. The
 maximum number of iterations is set to 1,000.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>id)))</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>y)))</span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x1)))</span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x2)))</span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(x1,x2)</span>
-<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">## LOD = 2 is equivalent to detection proportion = 56.3% (censoring proportion = 43.7%).</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>lod<span class="ot">=</span><span class="dv">2</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">## Modified.GEE(id, y, x, lod, substitue, corstr, typetd, maxiter)</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">Modified.GEE</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">1000</span>)</span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>id)))</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>y)))</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x1)))</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x2)))</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(x1,x2)</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="do">## LOD = 2 is equivalent to detection proportion = 56.3% (censoring proportion = 43.7%).</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a>lod<span class="ot">=</span><span class="dv">2</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="do">## Modified.GEE(id, y, x, lod, substitue, corstr, typetd, maxiter)</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="fu">Modified.GEE</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">1000</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="17%" />
@@ -627,16 +653,16 @@ maximum number of iterations is set to 1,000.</p>
 <p>The QIF method is performed using the function
 <code>Modified.GEE()</code>, which typically demonstrates efficiency
 advantages over GEE in large sample sizes.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the QIF approach through independence structure</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data=</span>simdata15, <span class="at">family=</span>gaussian)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
-<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
-<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="do">## Modified.QIF(id, y, x, lod, substitue, corstr, beta, typetd, maxiter)</span></span>
-<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="fu">Modified.QIF</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, <span class="st">&quot;exchangeable&quot;</span>, beta_initial, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">1000</span>)</span>
-<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
-<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
-<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the QIF approach through independence structure</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data=</span>simdata15, <span class="at">family=</span>gaussian)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="do">## Modified.QIF(id, y, x, lod, substitue, corstr, beta, typetd, maxiter)</span></span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">Modified.QIF</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, <span class="st">&quot;exchangeable&quot;</span>, beta_initial, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), <span class="dv">1000</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="8%" />
@@ -825,16 +851,16 @@ advantages over GEE in large sample sizes.</p>
 </table>
 <p>Another estimation method, GMM, is employed using the function
 <code>Modified.GMM()</code>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the GMM approach through independence structure</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data=</span>simdata15, <span class="at">family=</span>gaussian)</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="do">## Modified.GMM(id, y, x, lod, substitue, beta, maxiter)</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="fu">Modified.GMM</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, beta_initial, <span class="dv">1000</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the GMM approach through independence structure</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2, <span class="at">data=</span>simdata15, <span class="at">family=</span>gaussian)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">## Modified.GMM(id, y, x, lod, substitue, beta, maxiter)</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="fu">Modified.GMM</span>(id, y, x, lod, <span class="st">&quot;QQplot&quot;</span>, beta_initial, <span class="dv">1000</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="8%" />
@@ -1029,15 +1055,15 @@ simulation study, which includes 100 subjects (sample size is 100), each
 with three measurements collected over time. Detailed model mechanism
 are described in the setting II for type III time-dependent covariate on
 page 90 of Lai and Small (2007).</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">data</span>(simdata58)</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="fu">head</span>(simdata58)</span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt;             y int         x1 id visit</span></span>
-<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; 1  2.13315183   1 -0.1061468  1     1</span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; 2 -0.93398126   1 -0.1406264  1     2</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt; 3  0.38660420   1 -0.2905621  1     3</span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; 4  0.70977961   1  0.1533462  2     1</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; 5 -0.07722418   1  0.3018084  2     2</span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 6  0.71894327   1 -0.1685652  2     3</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">data</span>(simdata58)</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">head</span>(simdata58)</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt;             y int         x1 id visit</span></span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; 1  2.13315183   1 -0.1061468  1     1</span></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; 2 -0.93398126   1 -0.1406264  1     2</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; 3  0.38660420   1 -0.2905621  1     3</span></span>
+<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt; 4  0.70977961   1  0.1533462  2     1</span></span>
+<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt; 5 -0.07722418   1  0.3018084  2     2</span></span>
+<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt; 6  0.71894327   1 -0.1685652  2     3</span></span></code></pre></div>
 <p>Failure to account for time-dependency in covariates can lead to
 inefficient regression parameter estimation. The function
 <code>Selected.GEE()</code> allows the selection of a type of
@@ -1047,19 +1073,35 @@ LOD. The selection approach applied to choose a type of time-dependency
 is the empirical mean squared error (MSE) minimization criterion (Chen
 and Westgate, 2017, 2019). Given the longitudinal nature of the dataset,
 “AR-1” is used as the working correlation structure.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>id)))</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot;.</span></span>
-<span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="do">## Selected.GEE(id, y, x, lod, substitue, corstr, maxiter)</span></span>
-<span id="cb9-10"><a href="#cb9-10" tabindex="-1"></a><span class="fu">Selected.GEE</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="dv">1000</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" tabindex="-1"></a><span class="co">#&gt; Selected type of time-dependent covariate</span></span>
-<span id="cb9-12"><a href="#cb9-12" tabindex="-1"></a><span class="co">#&gt; 3</span></span>
-<span id="cb9-13"><a href="#cb9-13" tabindex="-1"></a><span class="co">#&gt; Results based on the empirical MSE minimization criterion (EMMC)</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>id)))</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
+<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
+<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot;.</span></span>
+<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a><span class="do">## Selected.GEE(id, y, x, lod, substitue, corstr, maxiter)</span></span>
+<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a><span class="fu">Selected.GEE</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="dv">1000</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a><span class="co">#&gt; K = 5</span></span>
+<span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="co">#&gt; Selected type of time-dependent covariate</span></span>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a><span class="co">#&gt; 3</span></span>
+<span id="cb10-29"><a href="#cb10-29" tabindex="-1"></a><span class="co">#&gt; Results based on the empirical MSE minimization criterion (EMMC)</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1070,29 +1112,33 @@ and Westgate, 2017, 2019). Given the longitudinal nature of the dataset,
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0015379</td>
+<td align="right">0.0015546</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0014166</td>
+<td align="right">0.0014305</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0011401</td>
+<td align="right">0.0011384</td>
 </tr>
 </tbody>
 </table>
 <p>Once the type of time-dependent covaraite is selected, i.e., in this
 case, <strong>type 3</strong>, it can be updated in the “typed” vector
 of the function <code>Modified.GEE()</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>id)))</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">Modified.GEE</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">3</span>), <span class="dv">1000</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>id<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>id)))</span>
+<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
+<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
+<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="fu">Modified.GEE</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">3</span>), <span class="dv">1000</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt; K = 5</span></span>
+<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt; Results include typical asymptotic standard error (SE) estimates and bias-corrected SE estimates that use covariance inflation corrections.</span></span>
+<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a><span class="co">#&gt; Covariance inflation corrections are based on the corrections of Mancl and DeRouen (MD) (2001), and Kauermann and Carroll (KC) (2001).</span></span>
+<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a><span class="co">#&gt; Last covariance inflation correction averages the above corrections (AVG) (Ford and Westgate, 2017, 2018).</span></span></code></pre></div>
 <table>
 <colgroup>
 <col width="17%" />
@@ -1126,19 +1172,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.450925205700861</td>
-<td align="left">0.0374051461447614</td>
-<td align="left">12.0551649218463</td>
+<td align="left">0.45245512785727</td>
+<td align="left">0.0373274568352916</td>
+<td align="left">12.1212417404631</td>
 <td align="left">0</td>
-<td align="left">0.00250336834913737</td>
-<td align="left">2.1830949277774</td>
+<td align="left">0.00249564305185586</td>
+<td align="left">2.18387817210796</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.251550493759235</td>
-<td align="left">0.0332298569215458</td>
-<td align="left">7.57001435044196</td>
-<td align="left">2.07276418251467e-11</td>
+<td align="left">0.251118976434343</td>
+<td align="left">0.0332009641134908</td>
+<td align="left">7.56360494761369</td>
+<td align="left">2.13828954542805e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1153,19 +1199,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.450925205700861</td>
-<td align="left">0.0379198992224082</td>
-<td align="left">11.8915190954514</td>
+<td align="left">0.45245512785727</td>
+<td align="left">0.0378408512871763</td>
+<td align="left">11.956790412128</td>
 <td align="left">0</td>
-<td align="left">0.00259135719310305</td>
-<td align="left">2.26112945039475</td>
+<td align="left">0.00258339280617238</td>
+<td align="left">2.26197465996701</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.251550493759235</td>
-<td align="left">0.0339623090508501</td>
-<td align="left">7.40675474634546</td>
-<td align="left">4.57056614777684e-11</td>
+<td align="left">0.251118976434343</td>
+<td align="left">0.0339332105765751</td>
+<td align="left">7.40038953483808</td>
+<td align="left">4.71326311313192e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1180,19 +1226,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.450925205700861</td>
-<td align="left">0.0376613295000215</td>
-<td align="left">11.9731621715745</td>
+<td align="left">0.45245512785727</td>
+<td align="left">0.0375829632360902</td>
+<td align="left">12.0388359218782</td>
 <td align="left">0</td>
-<td align="left">0.00254678381890442</td>
-<td align="left">2.22159195391249</td>
+<td align="left">0.00253894012589927</td>
+<td align="left">2.22240540992235</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.251550493759235</td>
-<td align="left">0.0335917858887442</td>
-<td align="left">7.48845252206504</td>
-<td align="left">3.0785152205226e-11</td>
+<td align="left">0.251118976434343</td>
+<td align="left">0.0335627919025513</td>
+<td align="left">7.48206457804408</td>
+<td align="left">3.17524895265819e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1207,25 +1253,25 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.450925205700861</td>
-<td align="left">0.0377908355077444</td>
-<td align="left">11.9321311540851</td>
+<td align="left">0.45245512785727</td>
+<td align="left">0.0377121277027928</td>
+<td align="left">11.9976027717939</td>
 <td align="left">0</td>
-<td align="left">0.00254678381890442</td>
-<td align="left">2.24136070215362</td>
+<td align="left">0.00253894012589927</td>
+<td align="left">2.24219003494468</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.251550493759235</td>
-<td align="left">0.0337775555307121</td>
-<td align="left">7.4472675658993</td>
-<td align="left">3.75767195137655e-11</td>
+<td align="left">0.251118976434343</td>
+<td align="left">0.0337485094509976</td>
+<td align="left">7.44089088731355</td>
+<td align="left">3.87536669421706e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
 <td align="left">Estimated correlation</td>
-<td align="left">0.141648362085331</td>
+<td align="left">0.140722286028414</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1234,7 +1280,7 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">Estimated dispersion</td>
-<td align="left">0.36639482931441</td>
+<td align="left">0.365127293488017</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1246,16 +1292,32 @@ of the function <code>Modified.GEE()</code>.</p>
 <p>The QIF method can be performed using the function
 <code>Selected.QIF()</code>, and the selected type can be then updated
 in the “typed” vector of the function <code>Modified.QIF()</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the QIF approach through independence structure</span></span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1, <span class="at">data=</span>simdata58, <span class="at">family=</span>gaussian)</span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a><span class="do">## Selected.QIF(id, y, x, lod, substitue, corstr, beta, maxiter)</span></span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a><span class="fu">Selected.QIF</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, beta_initial, <span class="dv">1000</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a><span class="co">#&gt; Selected type of time-dependent covariate</span></span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a><span class="co">#&gt; 3</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a><span class="co">#&gt; Results based on the empirical MSE minimization criterion (EMMC)</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="do">## Gets initial estimates for the QIF approach through independence structure</span></span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>initial<span class="ot">=</span><span class="fu">glm</span>(y <span class="sc">~</span> x1, <span class="at">data=</span>simdata58, <span class="at">family=</span>gaussian)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>beta_initial<span class="ot">=</span><span class="fu">as.matrix</span>(initial<span class="sc">$</span>coefficients)</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="do">## Intercept is not included in the &quot;x&quot; and &quot;typed&quot;.</span></span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="do">## Selected.QIF(id, y, x, lod, substitue, corstr, beta, maxiter)</span></span>
+<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a><span class="fu">Selected.QIF</span>(id, y, x1, lod, <span class="st">&quot;MIWithID&quot;</span>, <span class="st">&quot;AR-1&quot;</span>, beta_initial, <span class="dv">1000</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; K = 5 </span></span>
+<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt; X </span></span>
+<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
+<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
+<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co">#&gt; K = 5</span></span>
+<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a><span class="co">#&gt; Selected type of time-dependent covariate</span></span>
+<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a><span class="co">#&gt; 3</span></span>
+<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a><span class="co">#&gt; Results based on the empirical MSE minimization criterion (EMMC)</span></span></code></pre></div>
 <table>
 <thead>
 <tr class="header">
@@ -1266,15 +1328,15 @@ in the “typed” vector of the function <code>Modified.QIF()</code>.</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0027840</td>
+<td align="right">0.0027288</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0024454</td>
+<td align="right">0.0024037</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0010948</td>
+<td align="right">0.0010964</td>
 </tr>
 </tbody>
 </table>
@@ -1300,29 +1362,29 @@ substitution approaches such as “LOD2”. The median or 50th quantile
 studies, an “exchangeable” structure is applied to the working
 correlation, while an “AR-1” structure is used for longitudinal datasets
 where subjects are measured over time.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>y)))</span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x1)))</span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x2)))</span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">1</span>,<span class="fu">length</span>(x1),<span class="dv">1</span>),x1,x2)</span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a><span class="do">## LOD = 2 is equivalent to detection proportion = 56.3% (censoring proportion = 43.7%).</span></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>lod<span class="ot">=</span><span class="dv">2</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a><span class="do">## Median or 50th quantile is given.</span></span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.5</span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot; but not in the &quot;typed&quot;.</span></span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a><span class="do">## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)</span></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;exchangeable&quot;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), simdata15)</span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a><span class="co">#&gt; Quantile level and correlation structure are provided in the column of Intercept.</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a><span class="co">#&gt;                   Intercept     X2      X3</span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a><span class="co">#&gt; Quantile Level          0.5      0       0</span></span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a><span class="co">#&gt; Structure      exchangeable      0       0</span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a><span class="co">#&gt; Estimate             0.7361 1.4998  0.7495</span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a><span class="co">#&gt; Standard Error       0.1007  0.353  0.7583</span></span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower         0.5363 0.7993 -0.7553</span></span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper         0.9359 2.2003  2.2543</span></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a><span class="co">#&gt; P-value                   0  8e-04  0.2564</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>y)))</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x1)))</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>x2<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata15<span class="sc">$</span>x2)))</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">1</span>,<span class="fu">length</span>(x1),<span class="dv">1</span>),x1,x2)</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="do">## LOD = 2 is equivalent to detection proportion = 56.3% (censoring proportion = 43.7%).</span></span>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a>lod<span class="ot">=</span><span class="dv">2</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="do">## Median or 50th quantile is given.</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.5</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot; but not in the &quot;typed&quot;.</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="do">## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;exchangeable&quot;</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>), simdata15)</span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; Quantile level and correlation structure are provided in the column of Intercept.</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt;                   Intercept     X2      X3</span></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; Quantile Level          0.5      0       0</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; Structure      exchangeable      0       0</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; Estimate             0.7361 1.4998  0.7495</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; Standard Error       0.1007  0.353  0.7583</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower         0.5363 0.7993 -0.7553</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper         0.9359 2.2003  2.2543</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="co">#&gt; P-value                   0      0  0.3254</span></span></code></pre></div>
 </div>
 <div id="time-dependent-covariates-1" class="section level3">
 <h3>4-2. Time-Dependent Covariates</h3>
@@ -1333,34 +1395,6 @@ embedded in the function <code>Quantile.select.FWZ()</code> because
 time-dependent covariates are typically associated with longitudinal
 studies. A detailed description of the selection process can be found in
 Chen <em>et al</em>. (2024).</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">1</span>,<span class="fu">length</span>(x1),<span class="dv">1</span>),x1)</span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
-<span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="do">## 95th quantile is given.</span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.95</span></span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot;.</span></span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="do">## Quantile.select.FWZ(y, x, lod, substitue, tau, data)</span></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="fu">Quantile.select.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, simdata58)</span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="co">#&gt;                         beta.0 beta.1</span></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="co">#&gt; Quantile Level          0.0000 0.9500</span></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="co">#&gt; Type of Time-Dependency 0.0000 2.0000</span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="co">#&gt; Estimate                1.5715 0.5074</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="co">#&gt; Standard Error          0.0932 0.0365</span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower            1.3866 0.4350</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper            1.7564 0.5798</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">#&gt; P-value                 0.0000 0.0000</span></span></code></pre></div>
-<p>The selection criterion identifies <strong>type 2</strong> as the
-appropriate covariate type. The quantile regression result with the
-updated covariate type of time-dependency is displayed. Additionally,
-this selected type of time-dependent covariate (in this case,
-<strong>type 2</strong>) can also be updated in the “typed” parameter of
-the function <code>Quantile.FWZ()</code>, enabling analysts to conduct
-multivariable analysis.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">1</span>,<span class="fu">length</span>(x1),<span class="dv">1</span>),x1)</span>
@@ -1371,18 +1405,46 @@ multivariable analysis.</p>
 <span id="cb14-8"><a href="#cb14-8" tabindex="-1"></a><span class="do">## 95th quantile is given.</span></span>
 <span id="cb14-9"><a href="#cb14-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.95</span></span>
 <span id="cb14-10"><a href="#cb14-10" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot; but not in the &quot;typed&quot;.</span></span>
-<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="do">## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)</span></span>
-<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">2</span>), simdata58)</span>
-<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt; Quantile level and correlation structure are provided in the column of Intercept.</span></span>
-<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt;                Intercept     X2</span></span>
-<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; Quantile Level      0.95      0</span></span>
-<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; Structure           AR-1      0</span></span>
-<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; Estimate          1.5685  0.507</span></span>
-<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; Standard Error    0.0907 0.0363</span></span>
-<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower      1.3885  0.435</span></span>
-<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper      1.7485  0.579</span></span>
-<span id="cb14-22"><a href="#cb14-22" tabindex="-1"></a><span class="co">#&gt; P-value                0      0</span></span></code></pre></div>
+<span id="cb14-11"><a href="#cb14-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot;.</span></span>
+<span id="cb14-12"><a href="#cb14-12" tabindex="-1"></a><span class="do">## Quantile.select.FWZ(y, x, lod, substitue, tau, data)</span></span>
+<span id="cb14-13"><a href="#cb14-13" tabindex="-1"></a><span class="fu">Quantile.select.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, simdata58)</span>
+<span id="cb14-14"><a href="#cb14-14" tabindex="-1"></a><span class="co">#&gt;                         beta.0 beta.1</span></span>
+<span id="cb14-15"><a href="#cb14-15" tabindex="-1"></a><span class="co">#&gt; Quantile Level          0.0000 0.9500</span></span>
+<span id="cb14-16"><a href="#cb14-16" tabindex="-1"></a><span class="co">#&gt; Type of Time-Dependency 0.0000 2.0000</span></span>
+<span id="cb14-17"><a href="#cb14-17" tabindex="-1"></a><span class="co">#&gt; Estimate                1.5715 0.5074</span></span>
+<span id="cb14-18"><a href="#cb14-18" tabindex="-1"></a><span class="co">#&gt; Standard Error          0.0932 0.0365</span></span>
+<span id="cb14-19"><a href="#cb14-19" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower            1.3866 0.4350</span></span>
+<span id="cb14-20"><a href="#cb14-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper            1.7564 0.5798</span></span>
+<span id="cb14-21"><a href="#cb14-21" tabindex="-1"></a><span class="co">#&gt; P-value                 0.0000 0.0000</span></span></code></pre></div>
+<p>The selection criterion identifies <strong>type 2</strong> as the
+appropriate covariate type. The quantile regression result with the
+updated covariate type of time-dependency is displayed. Additionally,
+this selected type of time-dependent covariate (in this case,
+<strong>type 2</strong>) can also be updated in the “typed” parameter of
+the function <code>Quantile.FWZ()</code>, enabling analysts to conduct
+multivariable analysis.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>y)))</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>x1<span class="ot">=</span><span class="fu">as.matrix</span>(<span class="fu">as.vector</span>(<span class="fu">t</span>(simdata58<span class="sc">$</span>x1)))</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">cbind</span>(<span class="fu">matrix</span>(<span class="dv">1</span>,<span class="fu">length</span>(x1),<span class="dv">1</span>),x1)</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="do">## LOD = 0.05 is equivalent to detection proportion = 50.7% (censoring proportion = 49.3%).</span></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>lod<span class="ot">=</span><span class="fl">0.05</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="do">## 95th quantile is given.</span></span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a>tau<span class="ot">=</span><span class="fl">0.95</span></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="do">## Intercept is included in the &quot;x&quot; but not in the &quot;typed&quot;.</span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="do">## Quantile.FWZ(y, x, lod, substitue, tau, corstr, typetd, data)</span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="fu">Quantile.FWZ</span>(y, x, lod, <span class="st">&quot;LOD2&quot;</span>, tau, <span class="st">&quot;AR-1&quot;</span>, <span class="fu">c</span>(<span class="dv">2</span>), simdata58)</span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; Quantile level and correlation structure are provided in the column of Intercept.</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt;                Intercept     X2</span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt; Quantile Level      0.95      0</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt; Structure           AR-1      0</span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; Estimate          1.5685  0.507</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; Standard Error    0.0907 0.0363</span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 95% CI Lower      1.3885  0.435</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; 95% CI Upper      1.7485  0.579</span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt; P-value                0      0</span></span></code></pre></div>
 </div>
 </div>
 <div id="references" class="section level2">
@@ -1394,11 +1456,11 @@ Sci Environ Epidemiol.</em> 2021; 31(6): 1057–1066.</p></li>
 <li><p>Chen IC, Bertke SJ, Estill CF. Compare the marginal effects for
 environmental exposure and biomonitoring data with repeated measurements
 and values below the limit of detection. <em>J Expo Sci Environ
-Epidemiol.</em> 2024. <a href="https://doi.org/10.1038/s41370-024-00640-7" class="uri">https://doi.org/10.1038/s41370-024-00640-7</a></p></li>
+Epidemiol.</em> 2024; 34: 1018–1027.</p></li>
 <li><p>Chen IC, Bertke SJ, Dahm MM. Quantile regression for longitudinal
 data with values below the limit of detection and time-dependent
 covariates – application to modeling carbon nanotube and nanofiber
-exposures. <em>Ann Work Expo Health.</em> 2024. <a href="https://doi.org/10.1093/annweh/wxae068" class="uri">https://doi.org/10.1093/annweh/wxae068</a></p></li>
+exposures. <em>Ann Work Expo Health.</em> 2024; 68(8): 846–858.</p></li>
 <li><p>Chen IC, Westgate PM. Improved methods for the marginal analysis
 of longitudinal data in the presence of time-dependent covariates.
 <em>Statistics in Medicine.</em> 2017; 36(16): 2533–2546.</p></li>
