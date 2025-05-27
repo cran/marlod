@@ -1,6 +1,6 @@
-f8111b2d7db69d49d7687c28e63903f2 *DESCRIPTION
+3df01e31c08d7263df138d0ca8a914dd *DESCRIPTION
 adba5aa1fef079b194741ea147852ffa *NAMESPACE
-fb4c8d01306db3ca9cd2c3921c382190 *NEWS.md
+310f473b32b882c63911f2e7c61bad90 *NEWS.md
 d1fe09a181db7fb2457cd7bff15a3b2d *R/functions_fillin_20240805.R
 4cbc7c0d31640fd6d61258d7d938bc82 *R/functions_mar_fill_20240805.R
 8ca712e86160c64a698566abcb0c2927 *R/functions_mar_select_fill_20240805.R
@@ -13,7 +13,7 @@ d423b7031baa2cb8d15ce7a456db20d2 *data/simdata15.rda
 ef5b2d2346b00890e1a235274fa0db36 *data/simdata58.rda
 eb0e2eb7dc50ffe4d75d3017c72b14c0 *inst/doc/marlod.R
 0fd4d439cfb3995cc6e48b617148d755 *inst/doc/marlod.Rmd
-4ecffe72822088e54921476fa621e024 *inst/doc/marlod.html
+73e00b63746012af62dd03653318c206 *inst/doc/marlod.html
 0c3c1f4e12e8bc1a2981cdcc77af5f58 *man/Fillin.Rd
 7ba9749bfefab8b98266c9222a415806 *man/MGEE.Rd
 89d1fbdde90c120d3c8c8fcfe3322958 *man/MQIF.Rd

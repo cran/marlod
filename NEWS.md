@@ -1,4 +1,9 @@
-### marlod 0.2.0  
+### marlod 0.2.1
+
+* Updated maintainer email address to flecsh@gmail.com
+* Removed 'NeedsCompilation: yes' from the DESCRIPTION file
+
+### marlod 0.2.0 (2025-03-27)
 
 #### Major changes
 * Added substitution methods, 'MIWithID' and 'MIWithIDRM', to function `Fillin()`
@@ -9,8 +14,6 @@
 * Updated the content of Vignettes user guide R markdown file
 * Modified the content of reference manual for `Fillin()`
 * Added a `NEWS.md` file to track changes to the package
-* Updated maintainer email address to flecsh@gmail.com
-
 
 ### marlod 0.1.2 (2024-11-29)
 
