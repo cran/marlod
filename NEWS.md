@@ -1,3 +1,5 @@
+# marlod 0.2.2
+
 ### marlod 0.2.1
 
 * Updated maintainer email address to flecsh@gmail.com

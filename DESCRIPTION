@@ -1,11 +1,11 @@
 Package: marlod
 Type: Package
 Title: Marginal Modeling for Exposure Data with Values Below the LOD
-Version: 0.2.1
+Version: 0.2.2
 Depends: R (>= 2.10)
 Imports: MASS, survival, quantreg, stats, knitr, utils
 Authors@R: c(
-    person("I-Chen", "Chen", email = c("flecsh@gmail.com","okv0@cdc.gov"), role = c("cre","aut"),
+    person("I-Chen", "Chen", email = c("flecsh@gmail.com","ichen@dhs.hawaii.gov"), role = c("cre","aut"),
            comment = (ORCID = "0000-0001-6764-8395")),
     person("Philip", "Westgate", role = c("ctb")),
     person("Liya", "Fu", role = c("ctb")))
@@ -20,8 +20,8 @@ Suggests: rmarkdown, testthat (>= 3.0.0)
 Config/testthat/edition: 3
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-05-27 19:39:36 UTC; okv0
+Packaged: 2025-10-18 06:50:13 UTC; flecs
 Author: I-Chen Chen [cre, aut] (0000-0001-6764-8395),
   Philip Westgate [ctb],
   Liya Fu [ctb]
-Date/Publication: 2025-05-27 23:00:06 UTC
+Date/Publication: 2025-10-18 22:40:09 UTC

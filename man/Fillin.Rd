@@ -32,6 +32,7 @@ library(marlod)
 y <- c(0,0,0,3.06,4.41,7.23,8.29,9.52,19.94,20.25) #LOD=3
 lod <- 3
 
+## Number of subjects (n) and time points (tp) aren't needed for an independent dataset.
 \donttest{Fillin(y, lod, n, tp, "None")}
 
 \donttest{Fillin(y, lod, n, tp, "LOD")}
@@ -46,12 +47,13 @@ Fillin(y, lod, n, tp, "BetaMean")
 
 \donttest{Fillin(y, lod, n, tp, "QQplot")}
 
-## Assumes this example is a longitudinal dataset with five subjects measured at two time points.
+## Assumes a balanced longitudinal dataset with five subjects measured at two time points.
 ## Number of subjects (n) and number of time points (tp) are required.
 
 n <- 5
 tp <- 2
 
-#Multiple imputation method with one covariate using id (order of subjects)
+#Multiple imputation method with one covariate using ID (order of subjects)
+#The IDs are 1, 1, 2, 2, 3, 3, 4, 4, 5, and 5.
 Fillin(y, lod, n, tp, "MIWithID")
 }

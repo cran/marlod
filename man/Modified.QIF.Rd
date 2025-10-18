@@ -64,17 +64,17 @@ initial=glm(y ~ x1 + x2, data=simdata15, family=gaussian)
 beta_initial=as.matrix(initial$coefficients)
 
 ## Intercept is not included in the "x"
-Modified.QIF(id, y, x, lod, "None", "exchangeable", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "None", "exchangeable", beta_initial, c(1,1), 1000)}
 
-Modified.QIF(id, y, x, lod, "LOD", "AR-1", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "LOD", "AR-1", beta_initial, c(1,1), 1000)}
 
-Modified.QIF(id, y, x, lod, "LOD2", "exchangeable", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "LOD2", "exchangeable", beta_initial, c(1,1), 1000)}
 
-Modified.QIF(id, y, x, lod, "LODS2", "AR-1", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "LODS2", "AR-1", beta_initial, c(1,1), 1000)}
 
-Modified.QIF(id, y, x, lod, "BetaMean", "exchangeable", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "BetaMean", "exchangeable", beta_initial, c(1,1), 1000)}
 
-Modified.QIF(id, y, x, lod, "BetaGM", "AR-1", beta_initial, c(1,1), 1000)
+\donttest{Modified.QIF(id, y, x, lod, "BetaGM", "AR-1", beta_initial, c(1,1), 1000)}
 
 Modified.QIF(id, y, x, lod, "MIWithID", "exchangeable", beta_initial, c(1,1), 1000)
 

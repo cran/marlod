@@ -49,7 +49,7 @@ overflow: visible;
 </style>
 <style type="text/css" data-origin="pandoc">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -356,7 +356,7 @@ non-detects, it is necessary to install the R package:</p>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="co">#&gt;   Please cite:</span></span>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="co">#&gt;   Chen, IC. marlod: an R package to model environmental exposure and biomonitoring</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="co">#&gt;   data with repeated measurements and values below the limit of detection.</span></span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt;   J Expo Sci Environ Epidemiol 2025.</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="co">#&gt;   J Expo Sci Environ Epidemiol 35, 630-631 (2025).</span></span>
 <span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="co">#&gt;   when publishing results obtained from the package.</span></span></code></pre></div>
 <p>After building and installing the package, you can view the vignette
 by using the command:</p>
@@ -396,11 +396,13 @@ substitution methods include “MIWithID” and “MIWithIDRM”.</p>
 <span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; DL </span></span>
 <span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; Z </span></span>
 <span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; K = 5</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt;  [1]  1.821762  1.808160  2.610667  3.060000  4.410000  7.230000  8.290000</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt;  [8]  9.520000 19.940000 20.250000</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#Multiple imputation method with two covariates using id and visit (order of time points)</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="co">#Fillin(y, lod, n, tp, &quot;MIWithIDRM&quot;)</span></span></code></pre></div>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; Warning in survreg.fit(X, Y, weights, offset, init = init, controlvals =</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; control, : Ran out of iterations and did not converge</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt;  [1]  1.445409  1.607572  2.693403  3.060000  4.410000  7.230000  8.290000</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="co">#&gt;  [8]  9.520000 19.940000 20.250000</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="co">#Multiple imputation method with two covariates using id and visit (order of time points)</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="co">#Fillin(y, lod, n, tp, &quot;MIWithIDRM&quot;)</span></span></code></pre></div>
 </div>
 <div id="outcome-data-normal-or-log-normal-distribution" class="section level2">
 <h2>3. Outcome Data: Normal or Log-Normal Distribution</h2>
@@ -1112,15 +1114,15 @@ and Westgate, 2017, 2019). Given the longitudinal nature of the dataset,
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0015242</td>
+<td align="right">0.0015367</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0014020</td>
+<td align="right">0.0014144</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0011396</td>
+<td align="right">0.0011393</td>
 </tr>
 </tbody>
 </table>
@@ -1172,19 +1174,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.452821002051275</td>
-<td align="left">0.0373341050873522</td>
-<td align="left">12.1288832554521</td>
+<td align="left">0.4517577042228</td>
+<td align="left">0.0373610860569393</td>
+<td align="left">12.091664132416</td>
 <td align="left">0</td>
-<td align="left">0.0024966420688547</td>
-<td align="left">2.18478785302503</td>
+<td align="left">0.0024993634058015</td>
+<td align="left">2.18323550583347</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.250525250480249</td>
-<td align="left">0.0332085330326595</td>
-<td align="left">7.54400232716889</td>
-<td align="left">2.35171881968199e-11</td>
+<td align="left">0.251110603691462</td>
+<td align="left">0.0332191609533937</td>
+<td align="left">7.55920969959985</td>
+<td align="left">2.18440820987098e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1199,19 +1201,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.452821002051275</td>
-<td align="left">0.0378475410095741</td>
-<td align="left">11.9643440491082</td>
+<td align="left">0.4517577042228</td>
+<td align="left">0.0378748944676197</td>
+<td align="left">11.9276293854501</td>
 <td align="left">0</td>
-<td align="left">0.00258446114934623</td>
-<td align="left">2.26294778050196</td>
+<td align="left">0.00258726796184815</td>
+<td align="left">2.26132747429058</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.250525250480249</td>
-<td align="left">0.0339414906696044</td>
-<td align="left">7.3810915648617</td>
-<td align="left">5.17350606799027e-11</td>
+<td align="left">0.251110603691462</td>
+<td align="left">0.0339523243816211</td>
+<td align="left">7.39597680762592</td>
+<td align="left">4.81478190650364e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1226,19 +1228,19 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">0</td>
-<td align="left">0.452821002051275</td>
-<td align="left">0.0375896330058092</td>
-<td align="left">12.0464331743089</td>
+<td align="left">0.4517577042228</td>
+<td align="left">0.0376167980814665</td>
+<td align="left">12.0094672397271</td>
 <td align="left">0</td>
-<td align="left">0.00253997288454896</td>
-<td align="left">2.22334596836551</td>
+<td align="left">0.00254273658782489</td>
+<td align="left">2.22176028633439</td>
 </tr>
 <tr class="odd">
 <td align="left">1</td>
-<td align="left">0.250525250480249</td>
-<td align="left">0.0335707070976699</td>
-<td align="left">7.46261464649452</td>
-<td align="left">3.48875373035185e-11</td>
+<td align="left">0.251110603691462</td>
+<td align="left">0.0335814396642411</td>
+<td align="left">7.47766046370118</td>
+<td align="left">3.24369420212633e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
@@ -1253,25 +1255,25 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="odd">
 <td align="left">0</td>
-<td align="left">0.452821002051275</td>
-<td align="left">0.0377188074439185</td>
-<td align="left">12.0051781256484</td>
+<td align="left">0.4517577042228</td>
+<td align="left">0.0377460668734847</td>
+<td align="left">11.9683384691968</td>
 <td align="left">0</td>
-<td align="left">0.00253997288454896</td>
-<td align="left">2.24314687443373</td>
+<td align="left">0.00254273658782489</td>
+<td align="left">2.24154388031248</td>
 </tr>
 <tr class="even">
 <td align="left">1</td>
-<td align="left">0.250525250480249</td>
-<td align="left">0.0337566079746794</td>
-<td align="left">7.42151731205237</td>
-<td align="left">4.25589563590734e-11</td>
+<td align="left">0.251110603691462</td>
+<td align="left">0.0337673912290977</td>
+<td align="left">7.43648219632311</td>
+<td align="left">3.95887767012937e-11</td>
 <td align="left">0</td>
 <td align="left">0</td>
 </tr>
 <tr class="odd">
 <td align="left">Estimated correlation</td>
-<td align="left">0.141636045224919</td>
+<td align="left">0.140960981148175</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1280,7 +1282,7 @@ of the function <code>Modified.GEE()</code>.</p>
 </tr>
 <tr class="even">
 <td align="left">Estimated dispersion</td>
-<td align="left">0.365171591232733</td>
+<td align="left">0.365799168111184</td>
 <td align="left">0</td>
 <td align="left">0</td>
 <td align="left">0</td>
@@ -1328,15 +1330,15 @@ in the “typed” vector of the function <code>Modified.QIF()</code>.</p>
 <tbody>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.0028805</td>
+<td align="right">0.0027467</td>
 </tr>
 <tr class="even">
 <td align="right">2</td>
-<td align="right">0.0024740</td>
+<td align="right">0.0024161</td>
 </tr>
 <tr class="odd">
 <td align="right">3</td>
-<td align="right">0.0010988</td>
+<td align="right">0.0010972</td>
 </tr>
 </tbody>
 </table>
