@@ -1,6 +1,11 @@
-# marlod 0.2.2
+# marlod 0.2.3
 
-### marlod 0.2.1
+### marlod 0.2.2 (2026-04-15)
+
+* Modified the ORCID information
+* Updated the citation to match https://doi.org/10.1038/s41370-025-00752-8
+
+### marlod 0.2.1 (2025-04-25)
 
 * Updated maintainer email address to flecsh@gmail.com
 * Removed 'NeedsCompilation: yes' from the DESCRIPTION file
